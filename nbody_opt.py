@@ -145,5 +145,4 @@ if __name__ == '__main__':
 
     import timeit
     print(timeit.timeit("nbody(100, 'sun', 20000, BODIES)", globals=globals(), number=1))
-    # nbody(100, 'sun', 20000)
-
+    ############# Running the main function of this program will automatically print out a run time of the program, as well as the results the program calculates.
