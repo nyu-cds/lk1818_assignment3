@@ -16,7 +16,8 @@ def advance(dt, iterations, BODIES):
     '''
         advance the system, one step each iteration, and repeat for all iteration under one loop.
     '''
-    pairs = list(itertools.combinations(BODIES.keys(), 2))
+    keys = BODIES.keys()
+    pairs = list(itertools.combinations(keys, 2))
     for _ in range(iterations):
         for body1, body2 in pairs:
             ([x1, y1, z1], v1, m1) = BODIES[body1]
@@ -34,7 +35,7 @@ def advance(dt, iterations, BODIES):
             v2[1] += dy * b2
             v2[2] += dz * b2
         
-        for body in BODIES.keys():
+        for body in keys:
             (r, [vx, vy, vz], m) = BODIES[body]
             # Replace update_rs with default numerical operations
             r[0] += dt * vx
@@ -46,7 +47,8 @@ def report_energy(BODIES, e=0.0):
     '''
         compute the energy and return it so that it can be printed
     '''
-    pairs = list(itertools.combinations(BODIES.keys(), 2))    
+    keys = BODIES.keys()
+    pairs = list(itertools.combinations(keys, 2))    
     for body1, body2 in pairs:
         ((x1, y1, z1), v1, m1) = BODIES[body1]
         ((x2, y2, z2), v2, m2) = BODIES[body2]
@@ -54,7 +56,7 @@ def report_energy(BODIES, e=0.0):
         (dx, dy, dz) = (x1-x2, y1-y2, z1-z2)
         e -= (m1 * m2) / ((dx * dx + dy * dy + dz * dz) ** 0.5)
         
-    for body in BODIES.keys():
+    for body in keys:
         (r, [vx, vy, vz], m) = BODIES[body]
         e += m * (vx * vx + vy * vy + vz * vz) / 2.
         
@@ -65,7 +67,8 @@ def offset_momentum(BODIES, ref, px=0.0, py=0.0, pz=0.0):
         ref is the body in the center of the system
         offset values from this reference
     '''
-    for body in BODIES.keys():
+    keys = BODIES.keys()
+    for body in keys:
         (r, [vx, vy, vz], m) = BODIES[body]
         px -= vx * m
         py -= vy * m
