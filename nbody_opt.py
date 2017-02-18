@@ -1,5 +1,10 @@
 """
     N-body simulation.
+    
+    Author: lk1818
+    Date: 02/11/2017
+
+
     Different from the originl version, this version has reduced function call overhead，used alternatives to membership testing of lists
     used local rather than global variables, and used data aggregation to reduce loop overheads
 
