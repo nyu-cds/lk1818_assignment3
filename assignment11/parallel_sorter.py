@@ -64,6 +64,10 @@ def parallel_sort():
 	if rank == 0:
 		data_integrated_final = np.concatenate(data_integrated) # Merge all sorted bins into one sorted array
 
+	return data_integrated_final
 
 if __name__ == '__main__':
-	parallel_sort()
+	print('Sorting... \n')
+	data_final = parallel_sort()
+	print('Done sorting. Results: \n')
+	print(data_final)
